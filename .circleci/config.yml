@@ -1,0 +1,25 @@
+version: 2.1
+
+orbs:
+  
+  slack: circleci/slack@4.10.1
+
+commands:
+  slack-notify:
+    parameters:
+      message:
+        type: string
+    steps:
+      - slack/notify:
+          message: << parameters.message >>
+          color: "#FF0000"
+          fail_only: true
+
+workflows:
+  Give Your Application Auto-deploy Superpowers:
+    jobs:
+      - slack-notify:
+          message: "Hello World"
+          context: slack
+
+
