@@ -7,8 +7,9 @@ orbs:
 commands:
   slack-notify:
     parameters:
-      message:
-        type: string
+        message:
+          type: string
+          default: "Hello World"
     steps:
       - slack/notify:
           message: << parameters.message >>
@@ -18,8 +19,7 @@ commands:
 workflows:
   Give Your Application Auto-deploy Superpowers:
     jobs:
-      - slack-notify:
-          message: "Hello World"
-          context: slack
+      - slack-notify
+          
 
 
